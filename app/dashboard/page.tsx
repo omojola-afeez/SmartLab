@@ -4,7 +4,7 @@ import { formatDistanceToNow } from "@/lib/utils";
 import Link from "next/link";
 
 export default async function DashboardOverview() {
-  const supabase = await createClient();
+  const supabase = createClient();
 
   const [sessionsResult, studentsResult, violationsResult, computersResult, recentSessions, recentViolations] = await Promise.all([
     supabase.from("sessions").select("*", { count: "exact", head: true }).eq("status", "active"),
